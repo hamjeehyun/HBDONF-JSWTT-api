@@ -1,0 +1,42 @@
+server:
+  port: ${application.port}
+
+spring:
+  profiles:
+    active: prod
+  application:
+    name: 'hbdonf-jswtt'
+  datasource:
+    url: ${database.url}
+    username: ${database.username}
+    password: ${database.password}
+    driver-class-name: org.mariadb.jdbc.Driver
+    hikari:
+      connection-timeout: 3000
+      maximum-pool-size: 150
+      max-lifetime: 1800000
+      pool-name: HikariCP
+  jpa:
+    hibernate.ddl-auto: update
+
+logging:
+  slack:
+    location: ${application.workspace}
+    webhook-uri:
+  level:
+    org.hibernate:
+      type.descriptor.sql: trace #show parameter binding
+      SQL: ${logging.lovel}
+
+eureka:
+  client:
+    service-url:
+      enabled: 'true'
+      defaultZone: http://${application.ip}:8003/eureka/
+    fetch-registry: 'true'
+    enabled: 'true'
+  instance:
+    hostname: jswtt
+    prefer-ip-address: 'true'
+
+

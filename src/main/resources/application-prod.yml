@@ -1,0 +1,17 @@
+application:
+  workspace: PROD
+  port: 3016
+  ip:
+
+spring:
+  config:
+    activate:
+      on-profile: prod
+
+database:
+  url: jdbc:mariadb://35.155.108.210/hbd_onf_jswtt
+  username:
+  password:
+
+logging:
+  lovel: INFO
